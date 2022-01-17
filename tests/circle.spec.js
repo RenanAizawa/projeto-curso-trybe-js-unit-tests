@@ -3,6 +3,18 @@
 
 const circle = require('../src/circle');
 
+const testArea = (radius) => { 
+  return { area: 3.14 * radius * radius}
+ };
+ console.log(testArea(3));
+const testeCircle = (radius) => {
+  return {
+    radius,
+    area: 3.14 * radius * radius,
+    circumference: 2 * 3.14 * radius,
+  }
+};
+console.log(testeCircle(3));
 /*
   Essa função recebe o raio de um círculo e retorna um objeto contendo suas informações (Raio, Área e Circunferência).
   Se não for especificado um raio, a função retorna undefined.
@@ -25,14 +37,21 @@ const circle = require('../src/circle');
 
 describe('4 - Implemente os casos de teste para a função `circle`', () => {
   it('Verifica se ao receber um raio, a função `circle` retorna um objeto contedos os valores esperados', () => {
-    fail('Teste vazio!');
+    // fail('Teste vazio!');
     // ESCREVA SEUS TESTES ABAIXO:
-    // Teste se circle retorna undefined, caso o parâmetro passado não seja um número.
-    // Teste se circle retorna um objeto.
-    // Teste se o objeto retornado tem 3 propriedades.
-    // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
-    // Teste se dentro do objeto retornado, a função retorna uma key com value igual a circunferência correta para um círculo de raio 2.
+    // Teste se circle retorna undefined, caso o parâmetro passado não seja um número. - ok
+    expect(circle('a')).toEqual(undefined);
+    // Teste se circle retorna um objeto. - ok
+    expect(typeof circle(1)).toEqual('object');
+    // Teste se o objeto retornado tem 3 propriedades. - ok
+    expect(Object.keys(circle(3))).toEqual(['radius', 'area', 'circumference'])
+    // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined. - ok
+    expect(circle(' ')).toEqual(undefined);
+    // Teste se dentro do objeto retornado, a função retorna uma key com value igual a circunferência correta para um círculo de raio 2. - ok
+    expect(circle(2).circumference).toEqual(12.56);
     // Teste se dentro do objeto retornado, a função retorna uma key com value igual a área correta para um círculo de raio 3.
-    // Teste que a função retorna, num objeto, os dados corretos de um círculo de raio 3.
+    expect(circle(3).area).toEqual(testArea(3).area);
+    // Teste que a função retorna, num objeto, os dados corretos de um círculo de raio 3.nm 
+    expect(circle(3)).toEqual(testeCircle(3));
   });
 });
