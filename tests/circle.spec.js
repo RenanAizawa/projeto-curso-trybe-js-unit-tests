@@ -6,7 +6,6 @@ const circle = require('../src/circle');
 const testArea = (radius) => { 
   return { area: 3.14 * radius * radius}
  };
- console.log(testArea(3));
 const testeCircle = (radius) => {
   return {
     radius,
@@ -14,7 +13,6 @@ const testeCircle = (radius) => {
     circumference: 2 * 3.14 * radius,
   }
 };
-console.log(testeCircle(3));
 /*
   Essa função recebe o raio de um círculo e retorna um objeto contendo suas informações (Raio, Área e Circunferência).
   Se não for especificado um raio, a função retorna undefined.
